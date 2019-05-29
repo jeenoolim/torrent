@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Movie from './components/Movie';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+	state = {
+		movies: []
+	};
+
+	async componentDidMount() {
+		let api = 'https://yts.am/api/v2/list_movies.json';
+		let res = await fetch(api);
+		res = await res.json();
+		this.setState({ movies: res.data.movies });
+		// fetch(api)
+		// 	.then(function(res) {
+		// 		return res.json();
+		// 	})
+		// 	.then(res => {
+		// 		this.setState({ movies: res.data.movies }, () => console.log(this.state));
+		// 	});
+	}
+
+	render() {
+		return (
+			<div>
+				{this.state.movies.map(n => {
+					const { title, description_full, genres, small_cover_image, rating } = n;
+					return (
+						<Movie
+							title={title}
+							description={description_full}
+							genres={genres}
+							cover={small_cover_image}
+							rating={rating}
+						/>
+					);
+				})}
+			</div>
+		);
+	}
 }
-
-export default App;
