@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,13 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+
+## 실행순서
+폴더에 들어와서
+
+### `npm install` 로 설치 완료 후
+
+### `npm start` 로 로컬 서버를 실행 하면 자동으로 브라우저가 열릴 것임
+
+>>>>>>> 2382543eaaa158e571eace4baf8d2b21231a3d21
