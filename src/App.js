@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Movie from './components/Movie';
 
 const api = 'https://yts.am/api/v2/list_movies.json';
+
 export default class App extends Component {
 	state = {
 		movies: []

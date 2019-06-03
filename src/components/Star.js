@@ -5,9 +5,15 @@ export default class Star extends Component {
 		active: this.props.active
 	};
 
-	onClickHandler = e => {
-		this.setState({ active: !this.state.active });
-		this.props.onParentClick(this.props.index);
+	componentWillReceiveProps(nextProps) {
+		this.setState({ active: nextProps.active });
+	}
+
+	onClickHandler = async () => {
+		const { index, amount } = this.props;
+		const { active } = this.state;
+		await this.setState({ active: index >= amount ? !active : active });
+		this.props.onParentClick(index + (this.state.active ? 0 : -1));
 	};
 
 	render() {
